@@ -1,0 +1,1 @@
+<p>{{$userName}} 님</p><p>{{$orderInfo}} 상품이 발송되었습니다</p>

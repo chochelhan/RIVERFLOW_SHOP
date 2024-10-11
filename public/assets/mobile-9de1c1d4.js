@@ -1,0 +1,1 @@
+import{x as s}from"./index-e9ed42ea.js";const o=s("mobile",{state:()=>({class:"main",title:"",backUrl:"",bottom:!0}),actions:{setClass(t){this.class=t},setTitle(t){this.title=t},setBackUrl(t){this.backUrl=t},setBottom(t){this.bottom=t}}});export{o as m};

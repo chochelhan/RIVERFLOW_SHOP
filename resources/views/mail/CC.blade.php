@@ -1,0 +1,1 @@
+<p>{{$userName}}님</p><p>{{$cancleProduct}}</p><p>{{$refundPrice}} 주문취소가 되었습니다</p>
