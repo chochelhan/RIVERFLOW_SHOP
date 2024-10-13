@@ -23,14 +23,12 @@ if ! [ -x "$(command -v composer)" ]; then
   rm composer-setup.php
 
   if [ $RESULT -eq 0 ]; then
-    echo "Composer가 성공적으로 설치되었습니다."
+    echo "success install Composer."
     mv composer.phar /usr/local/bin/composer
   else
-    echo "Composer 설치에 실패했습니다."
+    echo "fail install Composer"
     exit 1
   fi
-else
-  echo "Composer가 이미 설치되어 있습니다."
 fi
 
 # composer install 실행
@@ -38,17 +36,19 @@ composer install
 
 # 설치 결과 출력
 if [ $? -eq 0 ]; then
-  echo "Composer install이 성공적으로 완료되었습니다."
+  echo "Composer install complete."
 else
-  echo "Composer install에 실패했습니다."
+  echo "Composer install fail."
   exit 1
 fi
 
 
 
+# install
 install_dir="./install"
 find "$install_dir" -type d -exec chmod 777 {} \;
 
+#public
 public_dir="./public"
 find "$public_dir" -type d -exec chmod 777 {} \;
 
@@ -64,17 +64,19 @@ find "$storage_public_dir" -type d -exec chmod  777 {} \;
 
 
 # storage framework
-
 storage_framework_dir="./storage/framework"
-
 find "$storage_framework_dir" -type d -exec chmod  777 {} \;
 
 
 # log file
-
 storage_log_file="./storage/logs/laravel.log"
-
 find "$storage_log_file" -type f -exec chmod 777 {} \;
 
 
-echo "권한 변경 완료!"
+# mail
+resources_mail_dir="./resources/views/mail"
+find "$resources_mail_dir" -type d -exec chmod  777 {} \;
+
+
+
+echo "complete!"
