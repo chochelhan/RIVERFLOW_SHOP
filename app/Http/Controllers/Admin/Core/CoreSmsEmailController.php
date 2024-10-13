@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Core;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Services\Admin\Customize\CustomizeSmsEmailService;
-
+use Illuminate\Http\response;
 
 class CoreSmsEmailController extends Controller
 {
@@ -19,6 +19,6 @@ class CoreSmsEmailController extends Controller
     public function updateSmsEmailSetting(Request $request) {
         $data = $this->smsEmailService->updateSmsEmailSetting($request);
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 }

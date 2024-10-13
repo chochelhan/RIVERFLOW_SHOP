@@ -24,7 +24,7 @@ class CoreApiWishController extends CoreApiAuthHeaderController
     public function getMyWishList() {
 
         $data = $this->wishService->getMyWishList();
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
 
     }
 
@@ -33,12 +33,12 @@ class CoreApiWishController extends CoreApiAuthHeaderController
     public function updateProductWish(Request $request) {
         if(!$request->has(['pid'])) {
             $data = ['status'=>'emptyField','data'=>''];
-            return apiResponse($data,$this->newToken);
+            return $this->apiResponse($data,$this->newToken);
         }
         $params['pid'] = $request->input('pid');
         $params['type'] = 'product';
         $data = $this->wishService->updateWish($params);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
 
     }
 

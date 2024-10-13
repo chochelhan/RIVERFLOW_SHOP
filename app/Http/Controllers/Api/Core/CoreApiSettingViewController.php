@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Api\Core;
-
 use App\Http\Controllers\Api\Core\CoreApiAuthHeaderController;
 use Illuminate\Http\Request;
 
@@ -25,14 +24,15 @@ class CoreApiSettingViewController extends CoreApiAuthHeaderController
     public function getBase() {
 
         $data = $this->settingService->getBase();
-	    return apiResponse(['status'=>'success','data'=>$data],$this->newToken);
+	 
+	    return $this->apiResponse(['status'=>'success','data'=>$data],$this->newToken);
 
     }
 
     public function getMain() {
 
 	    $data = $this->settingService->getMain();
-        return apiResponse(['status'=>'success','data'=>$data],$this->newToken);
-	
+        return $this->apiResponse(['status'=>'success','data'=>$data],$this->newToken);
+
     }
 }

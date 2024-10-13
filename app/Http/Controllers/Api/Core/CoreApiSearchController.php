@@ -20,7 +20,7 @@ class CoreApiSearchController extends CoreApiAuthHeaderController
     public function getCategoryList() {
 
         $data = $this->searchService->getCategoryList();
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
 
     }
 
@@ -28,10 +28,10 @@ class CoreApiSearchController extends CoreApiAuthHeaderController
     public function searchData(Request $request) {
         if(!$request->has(['keyword'])) {
             $data = ['status'=>'emptyField','data'=>''];
-            return apiResponse($data,$this->newToken);
+            return $this->apiResponse($data,$this->newToken);
         }
         $data = $this->searchService->searchData($request->input('keyword'));
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
 
     }
 

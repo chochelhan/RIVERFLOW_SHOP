@@ -14,9 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/controller/install/installDb',[App\Http\Controllers\Install\InstallController::class,'makeTableAndInsertData']);
+Route::post('/controller/install/installFile',[App\Http\Controllers\Install\InstallController::class,'install']);
+Route::post('/controller/install/getFile',[App\Http\Controllers\Install\InstallController::class,'getFile']);
+Route::post('/controller/install/checkDb',[App\Http\Controllers\Install\InstallController::class,'checkDb']);
+
 
 Route::middleware('apiGuard')->group(function () {
-    /**
+
+
+
+	/**
      * @ 기본설정 정보
      */
 	Route::get('/controller/setting/getBase',[App\Http\Controllers\Api\Customize\CustomizeApiSettingViewController::class,'getBase']);

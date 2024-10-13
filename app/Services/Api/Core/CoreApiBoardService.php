@@ -214,7 +214,7 @@ class CoreApiBoardService extends CoreApiAuthHeader {
     }
 
     public function insertArticleTempImage(Request $params) {
-        $params['type'] = 'image';
+	    $params['type'] = 'image';
 
         $imgName = uploadFile($params,'image',$this->boardRepository->filePath,$params);
         $imgUrl = $this->boardRepository->imgUrl.$imgName;

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Core;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Services\Admin\Customize\CustomizeBoardService;
-
+use Illuminate\Http\response;
 
 class CoreBoardController extends Controller
 {
@@ -19,27 +19,27 @@ class CoreBoardController extends Controller
     public function insertBoard(Request $request) {
         $data = $this->boardService->insertBoard($request);
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
     /*** 게시판  수정 **/
     public function updateBoard(Request $request) {
         $data = $this->boardService->updateBoard($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
     /*** 게시판  삭제 **/
     public function deleteBoard(Request $request) {
         $data = $this->boardService->deleteBoard($request);
-       return restResponse($data);
+       return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
     /*** 게시판 순서 변경 **/
     public function sequenceBoard(Request $request) {
         $data = $this->boardService->sequenceBoard($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -47,23 +47,23 @@ class CoreBoardController extends Controller
     public function insertArticle(Request $request) {
         $data = $this->boardService->insertArticle($request);
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
     /*** 게시글  수정 **/
     public function updateArticle(Request $request) {
         $data = $this->boardService->updateArticle($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
     /*** 게시글  삭제 **/
     public function deleteArticle(Request $request) {
         $data = $this->boardService->deleteArticle($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
     public function insertArticleTempImage(Request $request) {
         $data = $this->boardService->insertArticleTempImage($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
 }

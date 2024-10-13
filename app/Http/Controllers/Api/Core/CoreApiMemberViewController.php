@@ -25,12 +25,12 @@ class CoreApiMemberViewController extends CoreApiAuthHeaderController
     public function getMemberConfig() {
 
         $data = $this->memberService->getMemberConfig();
-        return apiResponse(['status'=>'success','data'=>$data],$this->newToken);
+        return $this->apiResponse(['status'=>'success','data'=>$data],$this->newToken);
     }
     // 약관정보
     public function getMemberAgree() {
 
         $data = $this->memberService->getMemberAgree();
-        return apiResponse(['status'=>'success','data'=>$data],$this->newToken);
+        return $this->apiResponse(['status'=>'success','data'=>$data],$this->newToken);
     }
 }

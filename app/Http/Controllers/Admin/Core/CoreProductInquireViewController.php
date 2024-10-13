@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Core;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Services\Admin\Customize\CustomizeProductInquireService;
-
+use Illuminate\Http\response;
 
 class CoreProductInquireViewController extends Controller
 {
@@ -20,7 +20,7 @@ class CoreProductInquireViewController extends Controller
     **/
     public function getInquireList(Request $request) {
         $list = $this->productInquireService ->getInquireList($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -28,7 +28,7 @@ class CoreProductInquireViewController extends Controller
     **/
     public function getInquireDataList(Request $request) {
         $list = $this->productInquireService ->getInquireDataList($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -36,6 +36,6 @@ class CoreProductInquireViewController extends Controller
     **/
     public function getInquireInfo(Request $request) {
         $info = $this->productInquireService->getInquireInfo($request);
-        return restResponse(['status'=>'success','data'=>$info]);
+        return response()->json(['status' => 'success','data'=>$info]);
     }
 }

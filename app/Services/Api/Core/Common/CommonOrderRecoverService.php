@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Services\Api\Core\Common;
+
 use App\Repositories\Repository\Api\Customize\CustomizeApiPointRepository;
 use App\Repositories\Repository\Api\Customize\CustomizeApiCouponRepository;
 use App\Repositories\Repository\Api\Customize\CustomizeApiMemberRepository;
 
-class CommonOrderRecoverService {
+class  CommonOrderRecoverService {
 
     private $pointRepository;
     private $couponRepository;

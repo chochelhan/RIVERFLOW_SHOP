@@ -23,44 +23,45 @@ class CoreApiBoardController extends CoreApiAuthHeaderController
 
         if(!$request->has('bid')) {
             $data = ['status'=>'emptyField','data'=>''];
-            return restResponse($data);
+            return $this->restResponse($data);
         }
         $data = $this->boardService->insertArticle($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
 
     public function updateArticle(Request $request) {
 
         if(!$request->has(['bid','id'])) {
             $data = ['status'=>'emptyField','data'=>''];
-            return restResponse($data);
+            return $this->restResponse($data);
         }
         $data = $this->boardService->updateArticle($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
 
     public function deleteArticle(Request $request) {
 
         if(!$request->has('id')) {
             $data = ['status'=>'emptyField','data'=>''];
-            return restResponse($data);
+            return $this->restResponse($data);
         }
         $data = $this->boardService->deleteArticle($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
     public function checkArticleUserPass(Request $request) {
 
         if(!$request->has(['id','user_pass'])) {
             $data = ['status'=>'emptyField','data'=>''];
-            return restResponse($data);
+            return $this->restResponse($data);
         }
         $data = $this->boardService->checkArticleUserPass($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
 
     public function insertArticleTempImage(Request $request) {
+
         $data = $this->boardService->insertArticleTempImage($request);
-        return restResponse($data);
+        return $this->restResponse($data);
     }
 
 }

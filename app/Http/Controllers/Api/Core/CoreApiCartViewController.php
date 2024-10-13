@@ -22,7 +22,7 @@ class CoreApiCartViewController extends CoreApiAuthHeaderController
     public function getCartList(Request $request) {
 
         $data = $this->cartService->getCartList($request);
-        return apiResponse(['status'=>'success','data'=>$data],$this->newToken);
+        return $this->apiResponse(['status'=>'success','data'=>$data],$this->newToken);
     }
 
 }

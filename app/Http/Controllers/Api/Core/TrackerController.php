@@ -17,8 +17,8 @@ class TrackerController extends Controller
 
     public function recordTracker(Request $request) {
         $data = $this->trackerService->recordTracker($request);
-        return restResponse($data);
-        
+        return $this->restResponse($data);
+
     }
 
 

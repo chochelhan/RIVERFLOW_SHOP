@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Core;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Services\Admin\Customize\CustomizeSmsEmailService;
-
+use Illuminate\Http\response;
 
 class CoreSmsEmailViewController extends Controller
 {
@@ -19,6 +19,6 @@ class CoreSmsEmailViewController extends Controller
     public function getSmsEmailSetting(Request $request) {
         $data = $this->smsEmailService->getSmsEmailSetting($request);
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 }

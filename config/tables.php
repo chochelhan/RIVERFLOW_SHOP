@@ -1,6 +1,6 @@
 <?php
 
-$prefix = '';
+$prefix = 'inysoft_';
 return [
 
     /*

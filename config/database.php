@@ -9,9 +9,9 @@ $dbName = '';
 $dbUserName = '';
 $dbPassword  = '';
 
-if(file_exists($path.'/license/db.json')) {
+if(file_exists($path.'/install/db.json')) {
 
-    $fileName = $path.'/license/db.json';
+    $fileName = $path.'/install/db.json';
     $fp = fopen($fileName, "r") or die("파일을 열 수 없습니다！");
     $jsonString = fgets($fp);
     fclose($fp);

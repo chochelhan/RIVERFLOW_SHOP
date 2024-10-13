@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Api\Core;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Helpers\apiResponse; //
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 use JWTAuth;
-
+use Illuminate\Http\response;
 /**
 *
 **/
@@ -45,19 +45,15 @@ class CoreApiAuthHeaderController  extends Controller
                     $this->newToken = ['status'=>'wrong','message'=>'errorToken'];
                 }
             }
-
-            /*
-            if(!empty($request->input('authToken')) && $request->input('authToken')=='sdetksiertqdsdwe') {
-                $newToken = Auth('jwt')->setTTL(60)->refresh();
-                $this->newToken = ['token'=>$newToken,
-                                   'expires_in'=> time()+ 3600];
-
-                $user = Auth('jwt')->setToken($newToken)->user();
-                $request->session()->put('tempUserInfo',$user);
-            }
-            */
         }
 
     }
+	public function restResponse($data) {
+		return response()->json(['status' => $data['status'], 'data' => $data['data']]);
+	}
 
+	public function apiResponse($data,$newToken) {
+
+		return response()->json(['status'=>$data['status'],'data'=>$data['data'],'newToken'=>$newToken]);
+	}
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Core;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Services\Admin\Customize\CustomizeOrderReviewService;
-
+use Illuminate\Http\response;
 
 class CoreOrderReviewViewController extends Controller
 {
@@ -20,7 +20,8 @@ class CoreOrderReviewViewController extends Controller
     **/
     public function getReviewList(Request $request) {
         $list = $this->orderReviewService ->getReviewList($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+	    return response()->json(['status' => 'success','data'=>$list]);
+
     }
 
     /**
@@ -28,7 +29,8 @@ class CoreOrderReviewViewController extends Controller
     **/
     public function getReviewDataList(Request $request) {
         $list = $this->orderReviewService ->getReviewDataList($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+	    return response()->json(['status' => 'success','data'=>$list]);
+
     }
 
     /**
@@ -36,6 +38,7 @@ class CoreOrderReviewViewController extends Controller
     **/
     public function getReviewInfo(Request $request) {
         $info = $this->orderReviewService->getReviewInfo($request);
-        return restResponse(['status'=>'success','data'=>$info]);
+	    return response()->json(['status' => 'success','data'=>$info]);
+
     }
 }

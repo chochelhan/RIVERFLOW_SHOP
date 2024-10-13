@@ -25,7 +25,7 @@ class CoreApiProductController extends CoreApiAuthHeaderController
     public function insertProductInquire(Request $request) {
 
         $data = $this->productService->insertProductInquire($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
 
     }
 

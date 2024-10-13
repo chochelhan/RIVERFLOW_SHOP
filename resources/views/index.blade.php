@@ -8,13 +8,13 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
         window.csrfToken = '{{$csrf_token}}';
-        window.demo = 'demo';
         window.metaKeyword = '{{$metaKeyword}}';
         window.metaDescription = '{{$metaContent}}';
         window.metaTitle = '{{$metaTitle}}';
+
     </script>
 
-    <script type="module" crossorigin src="/assets/index-e9ed42ea.js"></script>
+    <script type="module" crossorigin src="/assets/index-7c0b344a.js"></script>
     <link rel="stylesheet" href="/assets/index-7e5a05c7.css">
 </head>
 <body>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Services\Admin\Customize\CustomizeOrderService;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Http\response;
 
 /**
 * 주문
@@ -26,7 +26,7 @@ class CoreOrderViewController extends Controller
     **/
     public function getOrderList(Request $request) {
         $list = $this->orderService ->getOrderList($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -34,7 +34,7 @@ class CoreOrderViewController extends Controller
     **/
     public function getOrderDataList(Request $request) {
         $list = $this->orderService ->getOrderDataList($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -42,7 +42,7 @@ class CoreOrderViewController extends Controller
     **/
     public function getOrderDetail(Request $request) {
         $list = $this->orderService ->getOrderDetail($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -50,7 +50,7 @@ class CoreOrderViewController extends Controller
     **/
     public function getCancleList(Request $request) {
         $list = $this->orderService ->getCancleList($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -58,7 +58,7 @@ class CoreOrderViewController extends Controller
     **/
     public function getCancleDataList(Request $request) {
         $list = $this->orderService ->getClaimDataList($request,'cancle');
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -66,7 +66,7 @@ class CoreOrderViewController extends Controller
     **/
     public function getReturnList(Request $request) {
         $list = $this->orderService ->getReturnList($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -74,7 +74,7 @@ class CoreOrderViewController extends Controller
     **/
     public function getReturnDataList(Request $request) {
         $list = $this->orderService ->getClaimDataList($request,'return');
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -82,7 +82,7 @@ class CoreOrderViewController extends Controller
     **/
     public function getExchangeList(Request $request) {
         $list = $this->orderService ->getExchangeList($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -90,7 +90,7 @@ class CoreOrderViewController extends Controller
     **/
     public function getExchangeDataList(Request $request) {
         $list = $this->orderService ->getClaimDataList($request,'exchange');
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -98,7 +98,7 @@ class CoreOrderViewController extends Controller
     **/
     public function getRefundList(Request $request) {
         $list = $this->orderService ->getRefundList($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -106,7 +106,7 @@ class CoreOrderViewController extends Controller
     **/
     public function getRefundDataList(Request $request) {
         $list = $this->orderService ->getClaimDataList($request,'refund');
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
 }

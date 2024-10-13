@@ -30,30 +30,30 @@ class CoreApiProductViewController extends CoreApiAuthHeaderController
     public function getProductList(request $request) {
 
         $data = $this->productService->getProductList($request);
-        return apiResponse(['status'=>'success','data'=>$data],$this->newToken);
+        return $this->apiResponse(['status'=>'success','data'=>$data],$this->newToken);
     }
 
     public function getProductDataList(request $request) {
 
         $data = $this->productService->getProductDataList($request);
-        return apiResponse(['status'=>'success','data'=>$data],$this->newToken);
+        return $this->apiResponse(['status'=>'success','data'=>$data],$this->newToken);
     }
 
     // 상품 상세
     public function getProductInfo(request $request) {
 
         $data = $this->productService->getProductInfo($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
 
     // 상품과 연관된 다른상품
     public function getProductRelationList(request $request) {
         if(!$request->has('pid')) {
             $data = ['status'=>'emptyField','data'=>''];
-            return apiResponse($data,$this->newToken);
+            return $this->apiResponse($data,$this->newToken);
         }
         $data = $this->productService->getProductRelationList($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
 
 
@@ -61,11 +61,11 @@ class CoreApiProductViewController extends CoreApiAuthHeaderController
     public function getProductInquireList(Request $request) {
         if(!$request->has('pid')) {
             $data = ['status'=>'emptyField','data'=>''];
-            return apiResponse($data,$this->newToken);
+            return $this->apiResponse($data,$this->newToken);
         }
 
         $data = $this->productService->getProductInquireList($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
 
     }
 
@@ -73,11 +73,11 @@ class CoreApiProductViewController extends CoreApiAuthHeaderController
     public function getProductReviewList(Request $request) {
         if(!$request->has('pid')) {
             $data = ['status'=>'emptyField','data'=>''];
-            return apiResponse($data,$this->newToken);
+            return $this->apiResponse($data,$this->newToken);
         }
 
         $data = $this->reviewService->getProductReviewList($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
 
     }
 

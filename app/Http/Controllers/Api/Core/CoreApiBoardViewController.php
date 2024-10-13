@@ -23,28 +23,28 @@ class CoreApiBoardViewController extends CoreApiAuthHeaderController
 
         if(!$request->has('bid')) {
             $data = ['status'=>'emptyField','data'=>''];
-            return restResponse($data);
+            return $this->restResponse($data);
         }
         $data = $this->boardService->getArticleList($request);
-        return apiResponse(['status'=>'success','data'=>$data],$this->newToken);
+        return $this->apiResponse(['status'=>'success','data'=>$data],$this->newToken);
     }
     public function getArticleListByBtype(Request $request) {
 
         if(!$request->has('btype')) {
             $data = ['status'=>'emptyField','data'=>''];
-            return restResponse($data);
+            return $this->restResponse($data);
         }
         $data = $this->boardService->getArticleListByBtype($request);
-        return apiResponse(['status'=>'success','data'=>$data],$this->newToken);
+        return $this->apiResponse(['status'=>'success','data'=>$data],$this->newToken);
     }
 
     public function getArticleInfo(Request $request) {
 
         if(!$request->has('bid')) {
             $data = ['status'=>'emptyField','data'=>''];
-            return restResponse($data);
+            return $this->restResponse($data);
         }
         $data = $this->boardService->getArticleInfo($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
 }

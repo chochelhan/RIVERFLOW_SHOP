@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 use App\Services\Admin\Customize\CustomizeMemberService;
 use App\Services\Admin\Customize\CustomizeMemberLevelService;
 
-use function response;
+use Illuminate\Http\response;
 
 /**
 * 괸리자  회원정보
@@ -31,7 +31,7 @@ class CoreMemberController extends Controller
 	public function checkIsMemberNick(Request $request) {
 		$data = $this->memberService->checkIsMemberNick($request);
 
-		return restResponse($data);
+		return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 	}
 	/**
 	 * 회원정보 수정
@@ -39,7 +39,7 @@ class CoreMemberController extends Controller
 	public function updateMember(Request $request) {
 		$data = $this->memberService->updateMember($request);
 
-		return restResponse($data);
+		return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 	}
 
 	/**
@@ -48,7 +48,7 @@ class CoreMemberController extends Controller
 	public function updateMemberStatus(Request $request) {
 		$data = $this->memberService->updateMemberStatus($request);
 
-		return restResponse($data);
+		return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 	}
     /**
     * 회원등급 저장
@@ -56,7 +56,7 @@ class CoreMemberController extends Controller
     public function insertLevel(Request $request) {
         $data = $this->memberLevelService->insertLevel($request);
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
     /**
@@ -64,7 +64,7 @@ class CoreMemberController extends Controller
     **/
     public function updateLevel(Request $request) {
         $data = $this->memberLevelService->updateLevel($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -73,7 +73,7 @@ class CoreMemberController extends Controller
     **/
     public function deleteLevel(Request $request) {
         $data = $this->memberLevelService->deleteLevel($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -82,7 +82,7 @@ class CoreMemberController extends Controller
     **/
     public function sequenceLevel(Request $request) {
         $data = $this->memberLevelService->sequenceLevel($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -91,7 +91,7 @@ class CoreMemberController extends Controller
     **/
     public function updateMemberPoint(Request $request) {
         $data = $this->memberService->updateMemberPoint($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -100,7 +100,7 @@ class CoreMemberController extends Controller
     **/
     public function updateMemberCoupon(Request $request) {
         $data = $this->memberService->updateMemberCoupon($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 

@@ -39,10 +39,10 @@ class CoreApiMypageController extends CoreApiAuthHeaderController
     public function insertOrderClaim(Request $request) {
         if (!$request->has(['oid','claimType','opIds'])) {
             $data = ['status'=>'emptyField','data'=>''];
-            return restResponse($data);
+            return $this->restResponse($data);
         }
         $data = $this->mypageService->insertOrderClaim($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
 
 
@@ -50,10 +50,10 @@ class CoreApiMypageController extends CoreApiAuthHeaderController
     public function updateOrderComplete(Request $request) {
         if (!$request->has('id')) {
             $data = ['status'=>'emptyField','data'=>''];
-            return restResponse($data);
+            return $this->restResponse($data);
         }
         $data = $this->mypageService->updateOrderComplete($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
 
     /*** 구매후기 저장 ***/
@@ -61,37 +61,37 @@ class CoreApiMypageController extends CoreApiAuthHeaderController
 
 
         $data = $this->reviewService->insertOrderReview($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
 
     /*** 회원정보 // 닉네임체크 ***/
     public function checkMemberNick(Request $request) {
         $data = $this->memberService->checkMyMemberNick($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
 
     /*** 회원정보 // 정보변경 ***/
     public function updateMemberInfo(Request $request) {
         $data = $this->memberService->updateMemberInfo($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
 
 
     /*** 회원정보 // 이미지변경 ***/
     public function updateMemberImage(Request $request) {
         $data = $this->memberService->updateMemberImage($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
 
     /*** 배송지 // 등록/수정 ***/
     public function updateMyShipping(Request $request) {
         $data = $this->shippingService->updateMyShipping($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
     /*** 배송지 // 삭제 ***/
     public function deleteMyShipping(Request $request) {
         $data = $this->shippingService->deleteMyShipping($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
 
 }

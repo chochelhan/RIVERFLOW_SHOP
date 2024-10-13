@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Core;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Services\Admin\Customize\CustomizeOrderStatisticsService;
+use Illuminate\Http\response;
 
 class CoreStatisticsViewController extends Controller
 {
@@ -25,7 +26,7 @@ class CoreStatisticsViewController extends Controller
             return $checkParams;
         }
         $list = $this->orderStatisticsService->getJoinMemberStatistics($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
     /**
     * 전체 주문 통계
@@ -37,7 +38,7 @@ class CoreStatisticsViewController extends Controller
             return $checkParams;
         }
         $list = $this->orderStatisticsService->getOrderStatistics($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
 
     }
     /**
@@ -50,7 +51,7 @@ class CoreStatisticsViewController extends Controller
             return $checkParams;
         }
         $list = $this->orderStatisticsService->getOrderMemberStatistics($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
 
     }
     /**
@@ -63,7 +64,7 @@ class CoreStatisticsViewController extends Controller
         }
 
         $list = $this->orderStatisticsService->getOrderMemberDataStatistics($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
     /**
     * 상품별 주문 통계
@@ -75,7 +76,7 @@ class CoreStatisticsViewController extends Controller
             return $checkParams;
         }
         $list = $this->orderStatisticsService->getOrderProductStatistics($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
 
     }
     /**
@@ -88,7 +89,7 @@ class CoreStatisticsViewController extends Controller
         }
 
         $list = $this->orderStatisticsService->getOrderProductDataStatistics($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -96,17 +97,17 @@ class CoreStatisticsViewController extends Controller
     **/
     private function checkOrderRequest(Request $request) {
         if(!$request->has('dateType')) {
-            return restResponse(['status'=>'emptyField','data'=>'']);
+	        return response()->json(['status'=>'emptyField','data'=>'']);
         }
         switch($request->input('dateType')) {
             case 'day':
                 if(!$request->has('month')) {
-                     return restResponse(['status'=>'emptyField','data'=>'']);
+	                return response()->json(['status'=>'emptyField','data'=>'']);
                 }
                 break;
             default:
                 if(!$request->has(['styear','enyear'])) {
-                    return restResponse(['status'=>'emptyField','data'=>'']);
+	                return response()->json(['status'=>'emptyField','data'=>'']);
                 }
                 break;
         }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Core;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Auth\AuthManager;
+use Illuminate\Http\response;
 //use Illuminate\Support\Facades\Auth;
 /**
 * 회원 로그인
@@ -45,7 +46,7 @@ class CoreApiLoginAuthController extends Controller
             $status = 'message';
          }
 
-         return restResponse(['status'=>$status,'data'=>$data]);
+         return response()->json(['status'=>$status,'data'=>$data]);
 
     }
 

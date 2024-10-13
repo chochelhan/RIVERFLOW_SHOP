@@ -8,7 +8,7 @@ use App\Services\Admin\Customize\CustomizeProductService;
 use App\Services\Admin\Customize\CustomizeProductCategoryService;
 use App\Services\Admin\Customize\CustomizeProductBrandService;
 use App\Services\Admin\Customize\CustomizeProductAddInfoService;
-
+use Illuminate\Http\response;
 /**
 * 상품
 *
@@ -36,7 +36,7 @@ class CoreProductViewController extends Controller
     **/
     public function getCategoryList() {
         $list = $this->productCategoryService ->getCategoryList();
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -44,7 +44,7 @@ class CoreProductViewController extends Controller
     **/
     public function getBrandList() {
         $list = $this->productBrandService ->getBrandList();
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
 
@@ -53,14 +53,14 @@ class CoreProductViewController extends Controller
     **/
     public function getAddInfoList() {
         $list = $this->productAddInfoService ->getAddInfoList();
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
     /**
     * 상품 목록
     **/
     public function getProductList(Request $request) {
         $list = $this->productService ->getProductList($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -68,7 +68,7 @@ class CoreProductViewController extends Controller
     **/
     public function getProductDataList(Request $request) {
         $list = $this->productService ->getProductDataList($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -76,7 +76,7 @@ class CoreProductViewController extends Controller
     **/
     public function getProductRegistInfo(Request $request) {
         $info = $this->productService ->getRegistInfo($request);
-        return restResponse(['status'=>'success','data'=>$info]);
+	    return response()->json(['status' => 'success','data'=>$info]);
     }
 
     /**
@@ -84,6 +84,6 @@ class CoreProductViewController extends Controller
     **/
     public function getProductInfoNoticeList(Request $request) {
         $data = $this->productService ->getProductInfoNoticeList($request);
-        return restResponse(['status'=>'success','data'=>$data]);
+	    return response()->json(['status' => 'success','data'=>$data]);
     }
 }

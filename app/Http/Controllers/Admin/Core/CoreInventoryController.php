@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Core;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Services\Admin\Customize\CustomizeInventoryService;
-
+use Illuminate\Http\response;
 
 /**
 * 재고
@@ -27,7 +27,7 @@ class CoreInventoryController extends Controller
     **/
     public function updateInventoryProduct(Request $request) {
         $data = $this->inventoryService ->updateInventoryProduct($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);;
     }
 
 }

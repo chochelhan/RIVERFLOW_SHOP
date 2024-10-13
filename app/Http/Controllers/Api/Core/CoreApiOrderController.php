@@ -23,17 +23,17 @@ class CoreApiOrderController extends CoreApiAuthHeaderController
     public function insertOrder(Request $request) {
 
         $data = $this->orderService->insertOrder($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
 
     }
 
     public function orderRegistInfo(Request $request) {
         if(!$request->has(['type','ids'])) {
             $data = ['status'=>'emptyField','data'=>''];
-            return restResponse($data);
+            return $this->restResponse($data);
         }
         $data = $this->orderService->orderRegistInfo($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
 
     }
 
@@ -41,10 +41,10 @@ class CoreApiOrderController extends CoreApiAuthHeaderController
     public function updateOrderPriceInfo(Request $request) {
         if(!$request->has(['type','ids'])) {
             $data = ['status'=>'emptyField','data'=>''];
-            return restResponse($data);
+            return $this->restResponse($data);
         }
         $data = $this->orderService->updateOrderPriceInfo($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
 
     }
 
@@ -52,7 +52,7 @@ class CoreApiOrderController extends CoreApiAuthHeaderController
     public function getOrderComplete(Request $request) {
 
         $data = $this->orderService->getOrderComplete($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
 
     }
 

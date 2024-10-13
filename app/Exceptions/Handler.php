@@ -35,46 +35,59 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->renderable(function (NotFoundHttpException $e, $request) {
+	        $path = dirname(dirname(dirname(__FILE__)));
+			if(!file_exists($path.'/install/db.json')) {
+				if($_SERVER['REDIRECT_URL'] == '/install') {
+					$data = ['csrf_token' => '',
+						'metaTitle' => '',
+						'metaKeyword' => '',
+						'metaContent' => ''];
+					return response()->view('index', $data, 404);
+				} else {
+					return redirect('/install');
+				}
 
-            $siteInfos = \App\Models\Customize\CustomizeSettingSite::first();
-            $siteEnv = 'developer';
-            if(!empty($siteInfos)) {
-                $siteEnvData = ($siteInfos->siteEnv)?json_decode($siteInfos->siteEnv):'';
-                if($siteEnvData && !empty($siteEnvData->siteEnv)) {
-                    $siteEnv = $siteEnvData->siteEnv;
-                }
-            }
-            $protocol = 'http';
-            if(!empty($_SERVER['HTTPS'])) {
-                $protocol = ($_SERVER['HTTPS']=='on')?'https':'http';
+	        } else {
 
-            }
-            if($siteEnv == 'production' && $protocol=='http') {
-                return redirect('https://'.$_SERVER['HTTP_HOST'].'/');
-            } else {
-                $request->session()->regenerate();
-                $token = csrf_token();
+		        $siteInfos = \App\Models\Customize\CustomizeSettingSite::first();
+		        $siteEnv = 'developer';
+		        if (!empty($siteInfos)) {
+			        $siteEnvData = ($siteInfos->siteEnv) ? json_decode($siteInfos->siteEnv) : '';
+			        if ($siteEnvData && !empty($siteEnvData->siteEnv)) {
+				        $siteEnv = $siteEnvData->siteEnv;
+			        }
+		        }
+		        $protocol = 'http';
+		        if (!empty($_SERVER['HTTPS'])) {
+			        $protocol = ($_SERVER['HTTPS'] == 'on') ? 'https' : 'http';
 
-                $metaTitle = '';
-                $metaKeyword = '';
-                $metaContent = '';
-                if(!empty($siteInfos) && !empty($siteInfos->company)) {
-                    $siteMetaInfo = json_decode($siteInfos->company);
-                    if($siteMetaInfo) {
-                        $metaTitle = $siteMetaInfo->siteName;
-                        $metaKeyword = (!empty($siteMetaInfo->metaKeyword))?$siteMetaInfo->metaKeyword:'';
-                        $metaContent = (!empty($siteMetaInfo->metaContent))?$siteMetaInfo->metaContent:'';
-                    }
+		        }
+		        if ($siteEnv == 'production' && $protocol == 'http') {
+			        return redirect('https://' . $_SERVER['HTTP_HOST'] . '/');
+		        } else {
+			        $request->session()->regenerate();
+			        $token = csrf_token();
 
-                }
-                $data = ['csrf_token'=>$token,
-                        'metaTitle'=>$metaTitle,
-                        'metaKeyword'=>$metaKeyword,
-                        'metaContent'=>$metaContent];
+			        $metaTitle = '';
+			        $metaKeyword = '';
+			        $metaContent = '';
+			        if (!empty($siteInfos) && !empty($siteInfos->company)) {
+				        $siteMetaInfo = json_decode($siteInfos->company);
+				        if ($siteMetaInfo) {
+					        $metaTitle = $siteMetaInfo->siteName;
+					        $metaKeyword = (!empty($siteMetaInfo->metaKeyword)) ? $siteMetaInfo->metaKeyword : '';
+					        $metaContent = (!empty($siteMetaInfo->metaContent)) ? $siteMetaInfo->metaContent : '';
+				        }
 
-                return response()->view('index',$data, 404);
-            }
-             
+			        }
+			        $data = ['csrf_token' => $token,
+				        'metaTitle' => $metaTitle,
+				        'metaKeyword' => $metaKeyword,
+				        'metaContent' => $metaContent];
+
+			        return response()->view('index', $data, 404);
+		        }
+	        }
         });
         /*
          $this->reportable(function (Throwable $e) {

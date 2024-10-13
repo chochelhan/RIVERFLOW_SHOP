@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Services\Admin\Customize\CustomizeOrderService;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Http\response;
 
 /**
 * 주문
@@ -26,7 +26,7 @@ class CoreOrderController extends Controller
     **/
     public function updateOrderStatus(Request $request) {
         $data = $this->orderService ->updateOrderStatus($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
     /**
@@ -34,7 +34,7 @@ class CoreOrderController extends Controller
     **/
     public function updateClaimStatus(Request $request) {
         $data = $this->orderService ->updateClaimStatus($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
     /**
@@ -42,7 +42,7 @@ class CoreOrderController extends Controller
     **/
     public function activeRefund(Request $request) {
         $data = $this->orderService ->activeRefund($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
 }

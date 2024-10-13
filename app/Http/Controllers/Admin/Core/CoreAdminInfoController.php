@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\Admin\Customize\CustomizeMemberService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\response;
 /**
 * 괸리자 정보
 *
@@ -26,7 +27,7 @@ class CoreAdminInfoController extends Controller
         $data = Auth::user();
         $status = ($data)?'success':'fail';
 
-        return restResponse(['status'=>$status,'data'=>$data]);
+        return response()->json(['status' => $status, 'data' => $data]);
     }
 
     /**
@@ -35,7 +36,7 @@ class CoreAdminInfoController extends Controller
     public function updateAdminInfo(Request $request) {
 
         if(!$request->has(['name','nowUpass'])) {
-            return restResponse(['status'=>'emptyField','data'=>'']);
+	        return response()->json(['status' => 'emptyField', 'data' => '']);
         }
 
         $adminInfo = Auth::user();
@@ -46,9 +47,9 @@ class CoreAdminInfoController extends Controller
                 $updateData['password'] = Hash::make($request->input('upass'));
             }
             $data = $this->memberService->updateAdminInfo($id,$updateData);
-            return restResponse($data);
+            return response()->json(['status' =>$data['status'],'data' => $data['data']]);
         } else {
-            return restResponse(['status'=>'message','data'=>'wrongNowpass']);
+            return response()->json(['status'=>'message','data'=>'wrongNowpass']);
         }
 
 

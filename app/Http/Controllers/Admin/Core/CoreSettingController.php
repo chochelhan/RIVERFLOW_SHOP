@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\Admin\Customize\CustomizeSettingSiteService;
 use App\Services\Admin\Customize\CustomizeSettingDeliveryService;
 use App\Services\Admin\Customize\CustomizeSettingDeliveryLocalService;
-
+use Illuminate\Http\response;
 
 class CoreSettingController extends Controller
 {
@@ -32,27 +32,27 @@ class CoreSettingController extends Controller
     public function insertDelivery(Request $request) {
         $data = $this->deliveryService->insertDelivery($request);
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
     /*** 배송비 템플릿 수정 ***/
     public function updateDelivery(Request $request) {
         $data = $this->deliveryService->updateDelivery($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
     /*** 배송비 템플릿 삭제 **/
     public function deleteDelivery(Request $request) {
         $data = $this->deliveryService->deleteDelivery($request);
-       return restResponse($data);
+       return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
     /*** 배송비 템플릿 순서 변경 **/
     public function sequenceDelivery(Request $request) {
         $data = $this->deliveryService->sequenceDelivery($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -62,7 +62,7 @@ class CoreSettingController extends Controller
         $params['groupType'] = $request->input('groupType');
 
         $data = $this->siteService->updateSiteSetting($params,'delivery');
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -74,20 +74,20 @@ class CoreSettingController extends Controller
     public function insertDeliveryLocal(Request $request) {
         $data = $this->deliveryLocalService->insertDeliveryLocal($request);
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
     /*** 지역별 추가 배송비 수정 ***/
     public function updateDeliveryLocal(Request $request) {
         $data = $this->deliveryLocalService->updateDeliveryLocal($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
     /*** 지역별 추가 배송비 삭제 **/
     public function deleteDeliveryLocal(Request $request) {
        $data = $this->deliveryLocalService->deleteDeliveryLocal($request);
-       return restResponse($data);
+       return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -95,7 +95,7 @@ class CoreSettingController extends Controller
     public function updateDeliveryCompany(Request $request) {
        $params['duseCompany'] = json_decode($request->input('duseCompany'));
        $data = $this->siteService->updateSiteSetting($params,'delivery');
-       return restResponse($data);
+       return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -128,7 +128,7 @@ class CoreSettingController extends Controller
 
        }
        $data = $this->siteService->updateSiteSetting($params,'order');
-       return restResponse($data);
+       return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -140,7 +140,7 @@ class CoreSettingController extends Controller
 
         $data = $this->siteService->updateSiteSetting($request->all(),'company');
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -151,7 +151,7 @@ class CoreSettingController extends Controller
     public function updateMember(Request $request) {
 
         $data = $this->siteService->updateSiteSetting($request->all(),'member');
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -163,7 +163,7 @@ class CoreSettingController extends Controller
 
         $params[$request->input('agreeType')] = $request->input('data');
         $data = $this->siteService->updateSiteSetting($params,'agrees');
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -175,7 +175,7 @@ class CoreSettingController extends Controller
 
         $params[$request->input('imageType')] = $request->input('data');
         $data = $this->siteService->updateSiteSetting($params,'images');
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -186,7 +186,7 @@ class CoreSettingController extends Controller
     public function updatePoint(Request $request) {
 
         $data = $this->siteService->updateSiteSetting($request->all(),'points');
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
     /**
@@ -196,7 +196,7 @@ class CoreSettingController extends Controller
     public function updateMenu(Request $request) {
 
         $data = $this->siteService->updateSiteSetting($request->all(),'menu');
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -207,7 +207,7 @@ class CoreSettingController extends Controller
     public function updateLogo(Request $request) {
 
         $data = $this->siteService->updateLogo($request);
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -217,13 +217,13 @@ class CoreSettingController extends Controller
     /*** 배너 등록/수정 **/
     public function updateMainBanner(Request $request) {
         $data = $this->siteService->updateMainBanner($request);
-        return restResponse($data);
-	    
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
+
     }
     /*** 전시항목 등록/수정 **/
     public function updateMainDisplay(Request $request) {
         $data = $this->siteService->updateSiteSetting($request->all(),'mainPage');
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 
@@ -231,7 +231,7 @@ class CoreSettingController extends Controller
     /*** 실행환경 변경 **/
     public function updateSiteEnv(Request $request) {
         $data = $this->siteService->updateSiteSetting($request->all(),'siteEnv');
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
 
     }
 

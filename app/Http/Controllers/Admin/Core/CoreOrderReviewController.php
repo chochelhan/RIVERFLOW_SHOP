@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Core;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Services\Admin\Customize\CustomizeOrderReviewService;
-
+use Illuminate\Http\response;
 
 class CoreOrderReviewController extends Controller
 {
@@ -18,7 +18,7 @@ class CoreOrderReviewController extends Controller
     public function blindReview(Request $request) {
         $data = $this->orderReviewService->blindReview($request);
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
 }

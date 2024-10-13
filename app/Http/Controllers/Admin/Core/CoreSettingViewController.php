@@ -8,6 +8,7 @@ use App\Services\Admin\Customize\CustomizeSettingDeliveryService;
 use App\Services\Admin\Customize\CustomizeSettingDeliveryLocalService;
 use App\Services\Admin\Customize\CustomizeSettingSiteService;
 use App\Services\Admin\Customize\CustomizeAdminMainService;
+use Illuminate\Http\response;
 
 class CoreSettingViewController extends Controller
 {
@@ -33,7 +34,8 @@ class CoreSettingViewController extends Controller
     **/
     public function getSiteTotalInfo() {
         $data = $this->adminMainService->getMainInfo();
-        return restResponse(['status'=>'success','data'=>$data]);
+        return response()->json(['status' => 'success','data'=>$data]);
+
     }
 
 
@@ -43,7 +45,7 @@ class CoreSettingViewController extends Controller
     **/
     public function getDeliveryList() {
         $list = $this->deliveryService->getDeliveryList();
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -52,7 +54,7 @@ class CoreSettingViewController extends Controller
     public function getDeliveryLocalInfo(request $request) {
         $data = $this->deliveryLocalService->getDeliveryLocalInfo($request);
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
 
@@ -62,7 +64,7 @@ class CoreSettingViewController extends Controller
     public function getDeliveryCompanyInfo(request $request) {
         $data = $this->deliveryService->getDeliveryCompanyInfo($request);
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
     /**
@@ -71,7 +73,7 @@ class CoreSettingViewController extends Controller
     public function getPaymentCompanyInfo(request $request) {
         $data = $this->siteService->getPaymentCompanyInfo($request);
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
     /**
@@ -80,7 +82,7 @@ class CoreSettingViewController extends Controller
     public function getCompany() {
         $data = $this->siteService->getCompanyInfo();
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
     /**
@@ -89,7 +91,7 @@ class CoreSettingViewController extends Controller
     public function getMember() {
         $data = $this->siteService->getMemberInfo();
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
     /**
@@ -98,7 +100,7 @@ class CoreSettingViewController extends Controller
     public function getAgree() {
         $data = $this->siteService->getAgreeInfo();
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
     /**
     * 이미지정보
@@ -106,7 +108,7 @@ class CoreSettingViewController extends Controller
     public function getImage() {
         $data = $this->siteService->getImageInfo();
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
     /**
@@ -115,7 +117,7 @@ class CoreSettingViewController extends Controller
     public function getPoint() {
         $data = $this->siteService->getPointInfo();
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
     /**
@@ -124,7 +126,7 @@ class CoreSettingViewController extends Controller
     public function getMenu() {
         $data = $this->siteService->getMenuInfo();
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
     /**
     * 로고정보
@@ -132,7 +134,7 @@ class CoreSettingViewController extends Controller
     public function getLogo() {
         $data = $this->siteService->getLogoInfo();
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
     /**
@@ -141,13 +143,13 @@ class CoreSettingViewController extends Controller
     public function getMain() {
         $data = $this->siteService->getMainInfo();
 
-        return restResponse($data);
+        return response()->json(['status' => $data['status'], 'data' => $data['data']]);
     }
 
     public function getServerPath() {
         $data = dirname($_SERVER['DOCUMENT_ROOT']);
 
-        return restResponse(['status'=>'success','data'=>$data]);
+        return response()->json(['status' => 'success','data'=>$data]);
     }
 
 }

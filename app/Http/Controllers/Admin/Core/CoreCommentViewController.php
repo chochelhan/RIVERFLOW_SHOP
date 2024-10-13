@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Core;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Services\Admin\Customize\CustomizeCommentService;
+use Illuminate\Http\response;
 
 
 class CoreCommentViewController extends Controller
@@ -19,7 +20,7 @@ class CoreCommentViewController extends Controller
     public function getCommentList(Request $request) {
         $data = $this->commentService->getCommentList($request);
 
-        return restResponse(['status'=>'success','data'=>$data]);
+	    return response()->json(['status' => 'success','data'=>$data]);
     }
 
 

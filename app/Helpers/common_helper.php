@@ -1,18 +1,6 @@
 <?php
-
-use Illuminate\Http\JsonResponse;
 use Intervention\Image\Facades\Image;
-use function response;
 
-function restResponse($data) {
-
-   return response()->json(['status'=>$data['status'],'data'=>$data['data']]);
-}
-
-function apiResponse($data,$newToken) {
-
-   return response()->json(['status'=>$data['status'],'data'=>$data['data'],'newToken'=>$newToken]);
-}
 
 function makeFieldset($useFields,$params) {
     $fieldsets = [];

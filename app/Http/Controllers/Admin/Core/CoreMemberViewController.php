@@ -32,7 +32,7 @@ class CoreMemberViewController extends Controller
 		$data['list'] = $this->memberService->getMemberList($request);
 		$settingInfo = $this->settingService->getMemberInfo();
 		$data['memberSetting'] = $settingInfo['data'];
-		return restResponse(['status' => 'success', 'data' =>$data]);
+		return response()->json(['status' => 'success', 'data' =>$data]);
 
 	}
 
@@ -41,7 +41,7 @@ class CoreMemberViewController extends Controller
 	{
 		$list = $this->memberService->getMemberListByCoupon($request);
 
-		return restResponse(['status' => 'success', 'data' => $list]);
+		return response()->json(['status' => 'success', 'data' =>$list]);
 
 	}
 
@@ -52,8 +52,7 @@ class CoreMemberViewController extends Controller
 		$data['memberInfo'] = $this->memberService->getMemberInfo((int)$request->input('id'));
 		$settingInfo = $this->settingService->getMemberInfo();
 		$data['memberSetting'] = $settingInfo['data'];
-
-		return restResponse(['status' => 'success', 'data' => $data]);
+		return response()->json(['status' => 'success', 'data' =>$data]);
 
 	}
 
@@ -62,7 +61,7 @@ class CoreMemberViewController extends Controller
 	{
 		$list = $this->memberService->getMemberDataList($request);
 
-		return restResponse(['status' => 'success', 'data' => $list]);
+		return response()->json(['status' => 'success', 'data' =>$list]);
 
 	}
 
@@ -71,14 +70,14 @@ class CoreMemberViewController extends Controller
 	{
 		$list = $this->memberLevelService->getLevelList();
 
-		return restResponse(['status' => 'success', 'data' => $list]);
+		return response()->json(['status' => 'success', 'data' =>$list]);
 	}
 
 	// 적립금 내역
 	public function getPointList(Request $request)
 	{
 		$list = $this->memberService->getMemberPointList($request);
-		return restResponse(['status' => 'success', 'data' => $list]);
+		return response()->json(['status' => 'success', 'data' =>$list]);
 
 	}
 

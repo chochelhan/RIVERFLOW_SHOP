@@ -23,38 +23,38 @@ class CoreApiCommentController extends CoreApiAuthHeaderController
 
         if(!$request->has(['parentId','parentType','content'])) {
             $data = ['status'=>'emptyField','data'=>''];
-            return restResponse($data);
+            return $this->restResponse($data);
         }
         $data = $this->commentService->insertComment($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
 
     public function updateComment(Request $request) {
 
          if(!$request->has(['parentId','parentType','id'])) {
             $data = ['status'=>'emptyField','data'=>''];
-            return restResponse($data);
+            return $this->restResponse($data);
          }
         $data = $this->commentService->updateComment($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
 
     public function deleteComment(Request $request) {
 
         if(!$request->has('id')) {
             $data = ['status'=>'emptyField','data'=>''];
-            return restResponse($data);
+            return $this->restResponse($data);
         }
         $data = $this->commentService->deleteComment($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
     public function getCommentList(Request $request) {
         if(!$request->has(['parentId','parentType'])) {
             $data = ['status'=>'emptyField','data'=>''];
-            return restResponse($data);
+            return $this->restResponse($data);
         }
         $data = $this->commentService->getCommentList($request);
-        return apiResponse($data,$this->newToken);
+        return $this->apiResponse($data,$this->newToken);
     }
 
 

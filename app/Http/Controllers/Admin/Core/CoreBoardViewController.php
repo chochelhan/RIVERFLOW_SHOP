@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Core;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Services\Admin\Customize\CustomizeBoardService;
+use Illuminate\Http\response;
 
 class CoreBoardViewController extends Controller
 {
@@ -19,7 +20,8 @@ class CoreBoardViewController extends Controller
     **/
     public function getBoardList() {
         $list = $this->boardService->getBoardList();
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
+
     }
 
     /**
@@ -27,7 +29,7 @@ class CoreBoardViewController extends Controller
     **/
     public function getArticleRegist(Request $request) {
         $list = $this->boardService->getArticleRegist($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -35,7 +37,7 @@ class CoreBoardViewController extends Controller
     **/
     public function getArticleList(Request $request) {
         $list = $this->boardService->getArticleList($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
     /**
@@ -43,7 +45,7 @@ class CoreBoardViewController extends Controller
     **/
     public function getArticleDataList(Request $request) {
         $list = $this->boardService->getArticleDataList($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
 
@@ -52,14 +54,14 @@ class CoreBoardViewController extends Controller
     **/
     public function getFaqList(Request $request) {
         $list = $this->boardService->getFaqList($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
     /**
     * faq 게시글 쓰기
     **/
     public function getFaqRegist(Request $request) {
         $list = $this->boardService->getFaqRegist($request);
-        return restResponse(['status'=>'success','data'=>$list]);
+        return response()->json(['status' => 'success','data'=>$list]);
     }
 
 }

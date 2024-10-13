@@ -25,7 +25,7 @@ class CoreApiMemberController extends CoreApiAuthHeaderController
     public function join(Request $request) {
 
         $data = $this->memberService->join($request);
-        return restResponse($data);
+        return $this->restResponse($data);
     }
     /**
     *
@@ -33,10 +33,10 @@ class CoreApiMemberController extends CoreApiAuthHeaderController
     **/
     public function checkUid(Request $request) {
         if(empty($request->has('uid'))) {
-            return restResponse(['status'=>'emptyField','data'=>'']);
+            return $this->restResponse(['status'=>'emptyField','data'=>'']);
         }
         $data = $this->memberService->checkUid($request->input('uid'));
-        return restResponse($data);
+        return $this->restResponse($data);
     }
     /**
     *
@@ -44,10 +44,10 @@ class CoreApiMemberController extends CoreApiAuthHeaderController
     **/
     public function checkNick(Request $request) {
         if(empty($request->has('nick'))) {
-            return restResponse(['status'=>'emptyField','data'=>'']);
+            return $this->restResponse(['status'=>'emptyField','data'=>'']);
         }
         $data = $this->memberService->checkNick($request->input('nick'));
-        return restResponse($data);
+        return $this->restResponse($data);
     }
     /**
     *
@@ -55,10 +55,10 @@ class CoreApiMemberController extends CoreApiAuthHeaderController
     **/
     public function sendAuthEmail(Request $request) {
         if(empty($request->has('email'))) {
-            return restResponse(['status'=>'emptyField','data'=>'']);
+            return $this->restResponse(['status'=>'emptyField','data'=>'']);
         }
         $data = $this->memberService->sendAuthEmail($request);
-        return restResponse($data);
+        return $this->restResponse($data);
     }
 
     /**
@@ -67,10 +67,10 @@ class CoreApiMemberController extends CoreApiAuthHeaderController
     **/
     public function sendAuthPcs(Request $request) {
         if(empty($request->has('pcs'))) {
-            return restResponse(['status'=>'emptyField','data'=>'']);
+            return $this->restResponse(['status'=>'emptyField','data'=>'']);
         }
         $data = $this->memberService->sendAuthPcs($request);
-        return restResponse($data);
+        return $this->restResponse($data);
     }
 
     /**
@@ -79,10 +79,10 @@ class CoreApiMemberController extends CoreApiAuthHeaderController
     **/
     public function getAuthNumberConfirm(Request $request) {
         if(empty($request->has('authNumber'))) {
-            return restResponse(['status'=>'emptyField','data'=>'']);
+            return $this->restResponse(['status'=>'emptyField','data'=>'']);
         }
         $data = $this->memberService->confirmAuthNumber($request);
-        return restResponse($data);
+        return $this->restResponse($data);
     }
 
     /**
@@ -91,10 +91,10 @@ class CoreApiMemberController extends CoreApiAuthHeaderController
     **/
     public function findMemberUpass(Request $request) {
         if(empty($request->has(['name','email']))) {
-            return restResponse(['status'=>'emptyField','data'=>'']);
+            return $this->restResponse(['status'=>'emptyField','data'=>'']);
         }
         $data = $this->memberService->findMemberUpass($request);
-        return restResponse($data);
+        return $this->restResponse($data);
     }
 
 
